@@ -12,3 +12,9 @@ export interface Application {
   jobStatus: JobStatus;
   notes: string;
 }
+
+export interface ApplicationState {
+  applications: Application[];
+  setApplications: React.Dispatch<React.SetStateAction<Application[]>>;
+}
+
