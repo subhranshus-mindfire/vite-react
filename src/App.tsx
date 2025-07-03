@@ -1,7 +1,9 @@
+import Header from "./components/Header";
+
 const App = () => {
   return (
     <div className="app container">
-      Job Application Portal
+      <Header />
     </div>
   );
 };
