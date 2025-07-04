@@ -3,6 +3,8 @@ import { JOB_ROLES } from '../constants/constants';
 import { useApplicationContext } from '../context/AppContext';
 import { saveToStorage } from '../storage/storage.service';
 import type { Application } from '../types/types';
+import { useAlert } from '../context/AlertContext';
+
 
 const initialFormState: Omit<Application, 'id'> = {
   applicantName: '',
@@ -22,6 +24,8 @@ const Form: React.FC = () => {
     selectedApplication,
     setSelectedApplication,
   } = useApplicationContext();
+
+  const { showAlert } = useAlert()
 
   const [formData, setFormData] = useState(initialFormState);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
@@ -91,6 +95,7 @@ const Form: React.FC = () => {
         app.id === selectedApplication.id ? updated : app
       );
       setApplications(updatedList);
+      showAlert("Application Updated")
       saveToStorage('applications', updatedList);
       setSelectedApplication(null);
     } else {
@@ -100,6 +105,7 @@ const Form: React.FC = () => {
       };
       const updatedList = [...applications, newApp];
       setApplications(updatedList);
+      showAlert("Application Added")
       saveToStorage('applications', updatedList);
     }
 

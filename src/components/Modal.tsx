@@ -2,16 +2,19 @@ import React from 'react';
 import { useApplicationContext } from '../context/AppContext';
 import type { Application } from '../types/types';
 import { saveToStorage } from '../storage/storage.service';
+import { useAlert } from '../context/AlertContext';
 
 
 const Modal: React.FC = () => {
   const { modal, setModal, deleteIndex, applications, setApplications } = useApplicationContext()
+  const { showAlert } = useAlert()
 
   function deleteApplication(index: number | null, applications: Application[]) {
     if (index == null)
       return
     applications.splice(index, 1)
     setApplications([...applications])
+    showAlert("Application Deleted")
     saveToStorage("applications", [...applications])
     setModal(false)
   }

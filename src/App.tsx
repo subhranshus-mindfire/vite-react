@@ -1,3 +1,4 @@
+import Alert from "./components/Alert";
 import Counters from "./components/Counter";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -10,6 +11,7 @@ const App = () => {
       <Counters />
       <Hero />
       <Modal />
+      <Alert />
     </div>
   );
 };
