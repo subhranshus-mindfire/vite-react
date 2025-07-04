@@ -1,6 +1,7 @@
 import Counters from "./components/Counter";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import Modal from "./components/Modal";
 
 const App = () => {
   return (
@@ -8,6 +9,7 @@ const App = () => {
       <Header />
       <Counters />
       <Hero />
+      <Modal />
     </div>
   );
 };

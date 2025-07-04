@@ -10,8 +10,7 @@ interface CardProps {
 const Card = ({ id, text, icon, value }: CardProps) => {
   return (
     <div id={id} className="card text-center">
-      <div className="icon">{icon}</div>
-      <div className="title">{text}</div>
+      <div className="title">{text} {icon} </div>
       <div className="value">{value}</div>
     </div>
   );

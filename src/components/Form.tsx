@@ -16,28 +16,49 @@ const initialFormState: Omit<Application, 'id'> = {
 };
 
 const Form: React.FC = () => {
-  const { applications, setApplications } = useApplicationContext();
+  const {
+    applications,
+    setApplications,
+    selectedApplication,
+    setSelectedApplication,
+  } = useApplicationContext();
+
   const [formData, setFormData] = useState(initialFormState);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const suggestionsRef = useRef<HTMLUListElement>(null);
 
+  useEffect(() => {
+    if (selectedApplication) {
+      const { id, ...rest } = selectedApplication;
+      console.log(id)
+      setFormData(rest);
+    } else {
+      setFormData(initialFormState);
+    }
+  }, [selectedApplication]);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (suggestionsRef.current && !suggestionsRef.current.contains(e.target as Node)) {
+        setShowSuggestions(false);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
 
     if (name === 'jobRole') {
-      if (value.trim() === '') {
-        setSuggestions([]);
-        setShowSuggestions(false);
-        return;
-      }
-      const filtered = JOB_ROLES.filter(role =>
-        role.toLowerCase().includes(value.toLowerCase())
-      );
+      const filtered = value.trim()
+        ? JOB_ROLES.filter(role => role.toLowerCase().includes(value.toLowerCase()))
+        : [];
       setSuggestions(filtered);
-      setShowSuggestions(true);
+      setShowSuggestions(!!filtered.length);
     }
   };
 
@@ -46,17 +67,6 @@ const Form: React.FC = () => {
     setSuggestions([]);
     setShowSuggestions(false);
   };
-
-  const handleClickOutside = (e: MouseEvent) => {
-    if (suggestionsRef.current && !suggestionsRef.current.contains(e.target as Node)) {
-      setShowSuggestions(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
-  }, []);
 
   const validate = () => {
     const newErrors: { [key: string]: string } = {};
@@ -75,24 +85,34 @@ const Form: React.FC = () => {
     e.preventDefault();
     if (!validate()) return;
 
-    const newApplication: Application = {
-      id: Date.now().toString(),
-      ...formData,
-    };
+    if (selectedApplication) {
+      const updated = { ...selectedApplication, ...formData };
+      const updatedList = applications.map(app =>
+        app.id === selectedApplication.id ? updated : app
+      );
+      setApplications(updatedList);
+      saveToStorage('applications', updatedList);
+      setSelectedApplication(null);
+    } else {
+      const newApp: Application = {
+        id: Date.now().toString(),
+        ...formData,
+      };
+      const updatedList = [...applications, newApp];
+      setApplications(updatedList);
+      saveToStorage('applications', updatedList);
+    }
 
-    const updatedApps = [...applications, newApplication];
-    setApplications(updatedApps);
-    saveToStorage('applications', updatedApps);
     setFormData(initialFormState);
-    setSuggestions([]);
     setErrors({});
+    setSuggestions([]);
   };
 
   return (
     <div className="form bg-light left">
       <h2 className="text-center"><u>Job Application Form</u></h2>
       <div className="flex justify-content-center">
-        <form onSubmit={handleSubmit} id='applicationForm'>
+        <form onSubmit={handleSubmit} id="applicationForm">
           <div className="input">
             <label>Applicant Name<span className="text-danger">*</span></label>
             <input type="text" name="applicantName" value={formData.applicantName} onChange={handleChange} />
@@ -173,7 +193,18 @@ const Form: React.FC = () => {
           </div>
 
           <div className="buttons flex justify-center">
-            <input type="submit" value="Submit" className="submit-btn" />
+            <input type="submit" value={selectedApplication ? 'Update' : 'Submit'} className="submit-btn" />
+            {selectedApplication && (
+              <input
+                type="button"
+                className="cancel-btn"
+                onClick={() => {
+                  setSelectedApplication(null);
+                  setFormData(initialFormState);
+                }}
+                value={"Cancel"}
+              />
+            )}
           </div>
         </form>
       </div>

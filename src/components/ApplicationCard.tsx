@@ -4,9 +4,11 @@ import type { Application } from '../types/types';
 interface Props {
   application: Application;
   index: number;
+  onEdit: (index: number, application: Application) => void;
+  onDelete: (index: number) => void;
 }
 
-const ApplicationCard: React.FC<Props> = ({ application, index }) => {
+const ApplicationCard: React.FC<Props> = ({ application, index, onEdit, onDelete }) => {
   const statusClass =
     application.jobStatus === 'hired'
       ? 'text-success'
@@ -31,12 +33,16 @@ const ApplicationCard: React.FC<Props> = ({ application, index }) => {
             <a
               className="edit"
               href="#form-heading"
+              onClick={e => {
+                e.preventDefault();
+                onEdit(index, application);
+              }}
             >
               <i className="fa-solid fa-pen"></i> Edit
             </a>
             <a
               className="delete"
-
+              onClick={() => onDelete(index)}
             >
               <i className="fa-solid fa-trash"></i> Delete
             </a>
