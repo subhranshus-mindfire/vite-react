@@ -7,19 +7,21 @@ const ApplicationCards: React.FC = () => {
   const { applications, setSelectedApplication, setDeleteIndex, setModal } = useApplicationContext();
 
   return (
-    applications.map((app: Application, index: number) => (
-      <ApplicationCard
-        key={app.id}
-        application={app}
-        index={index}
-        onEdit={() => setSelectedApplication(app)}
-        onDelete={(index) => {
-          setDeleteIndex(index);
-          setModal(true)
-          console.log(index)
-        }}
-      />
-    ))
+    <>
+      {applications.map((app: Application, index: number) => (
+        <ApplicationCard
+          key={app.id}
+          application={app}
+          index={index}
+          onEdit={() => setSelectedApplication(app)}
+          onDelete={(index) => {
+            setDeleteIndex(index);
+            setModal(true);
+            console.log(index);
+          }}
+        />
+      ))}
+    </>
   );
 };
 

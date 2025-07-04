@@ -11,59 +11,62 @@ interface Props {
 const ApplicationCard: React.FC<Props> = ({ application, index, onEdit, onDelete }) => {
   const statusClass =
     application.jobStatus === 'hired'
-      ? 'text-success'
+      ? 'text-green-600'
       : application.jobStatus === 'rejected'
-        ? 'text-danger'
+        ? 'text-red-600'
         : '';
 
   return (
-    <li className="application-card" id={`app-${index}`}>
-      <div className="application-card-header flex">
-        <div className="application-card-header-left">
-          <div className="application-card-status">
-            <span className={statusClass}>{application.jobStatus}</span>
-          </div>
-          <div className="application-card-applicantName">
-            <b>{application.applicantName}</b>
-          </div>
-          <div className="application-card-role">{application.jobRole}</div>
-        </div>
-        <div className="application-card-header-right">
-          <div className="actions flex nowrap">
-            <a
-              className="edit"
-              href="#form-heading"
-              onClick={e => {
-                e.preventDefault();
-                onEdit(index, application);
-              }}
+    <li
+      className="bg-white shadow-xl rounded-[15px] p-2 px-4 mb-3"
+      id={`app-${index}`}
+    >
+      <div className="flex justify-between items-start mb-2">
+        <div>
+          <div className="mb-1">
+            <span
+              className={`inline-block text-sm md:text-base font-bold capitalize rounded px-2 py-1 bg-gray-300 ${statusClass} `}
             >
-              <i className="fa-solid fa-pen"></i> Edit
-            </a>
-            <a
-              className="delete"
-              onClick={() => onDelete(index)}
-            >
-              <i className="fa-solid fa-trash"></i> Delete
-            </a>
-          </div>
-        </div>
-      </div>
-      <div className="application-card-body">
-        <div className="application-card-name">
-          <span title="Company">
-            <i className="fa-solid fa-building"></i> {application.companyName}
-          </span>
-        </div>
-        <div className="flex application-card-footer">
-          <div className="application-card-location" title="Job Location">
-            <span>
-              <i className="fa-solid fa-location-dot"></i>{' '}
-              {application.jobType === 'remote' ? 'Remote' : application.location}
+              {application.jobStatus}
             </span>
           </div>
-          <div className="application-card-date">
-            Applied On {application.applicationDate}
+
+        </div>
+
+        <div className="flex gap-2 whitespace-nowrap text-sm md:text-base m-2">
+          <a
+            className="text-black font-bold bg-gray-300 px-3 py-1 rounded hover:scale-105 transition-transform"
+            href="#form-heading"
+            onClick={e => {
+              e.preventDefault();
+              onEdit(index, application);
+            }}
+          >
+            <i className="fa-solid fa-pen mr-1" /> Edit
+          </a>
+          <button
+            className="text-red-600 bg-red-100 font-bold px-3 py-1 rounded hover:scale-105 transition-transform"
+            onClick={() => onDelete(index)}
+          >
+            <i className="fa-solid fa-trash mr-1" /> Delete
+          </button>
+        </div>
+      </div>
+      <div className='flex flex-col gap-0.5'>
+        <div className="text-xl md:text-2xl font-semibold">{application.applicantName}</div>
+        <div className="text-lg md:text-xl" >{application.jobRole}</div>
+
+        <div>
+          <div className="text-base md:text-lg">
+            <i className="fa-solid fa-building mr-1" />
+            {application.companyName}
+          </div>
+          <div className="flex justify-between items-center text-base md:text-lg mb-2">
+            <div title="Job Location">
+              <i className="fa-solid fa-location-dot mr-1" />
+              {application.jobType === 'remote' ? 'Remote' : application.location}
+            </div>
+            <div className='italic text-gray-700 text-sm'>Applied On {application.applicationDate}</div>
           </div>
         </div>
       </div>

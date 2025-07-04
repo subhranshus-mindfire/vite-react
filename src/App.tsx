@@ -6,7 +6,7 @@ import Modal from "./components/Modal";
 
 const App = () => {
   return (
-    <div className="app container">
+    <div className="app container contents">
       <Header />
       <Counters />
       <Hero />
