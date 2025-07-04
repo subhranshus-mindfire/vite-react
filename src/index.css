@@ -1,0 +1,578 @@
+.container {
+  padding: 0px 50px;
+}
+
+body {
+  background-color: #f7f7f7;
+  background-size: cover;
+  overflow-x: hidden;
+  font-family: "Poppins", sans-serif;
+}
+
+.left {
+  position: sticky;
+  top: 20px;
+  align-self: start;
+  height: fit-content;
+}
+
+
+input,
+select {
+  font-family: "Poppins", sans-serif !important;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+li {
+  list-style-type: none;
+  margin: 0%;
+  padding: 0;
+}
+
+.flex {
+  display: flex;
+}
+
+.statuses {
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+table {
+  text-transform: capitalize;
+  font-size: 20px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: white;
+}
+
+table,
+th,
+td {
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+
+.grid {
+  display: grid;
+}
+
+.halfs {
+  grid-template-columns: 35% 65%;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+}
+
+.gap-2 {
+  gap: 20px;
+}
+
+.left {
+  font-size: 23px;
+}
+
+input,
+select {
+  height: 35px;
+  font-size: large;
+  padding-left: 10px;
+  border-radius: 5px;
+  border: 2px solid #dddddd;
+}
+
+label {
+  margin-top: 10px;
+}
+
+form input[type="button"],
+form input[type="submit"] {
+  margin: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: royalblue;
+  padding: 7px;
+  height: auto;
+  border: 2px solid royalblue;
+  color: #F2F2F2;
+}
+
+form input[type="button"]:hover,
+form input[type="submit"]:hover {
+  cursor: pointer;
+  background-color: rgb(0, 0, 114);
+}
+
+form {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: block;
+  width: 100%;
+  padding: .375rem 1.95rem;
+  line-height: 1.5;
+  color: #00060c;
+  background-color: #ffffff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 3%;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.right {
+  font-size: 24px;
+}
+
+td {
+  padding: 15px;
+}
+
+.fs-larger {
+  font-size: 36px;
+  color: #000000;
+  font-weight: bolder;
+}
+
+table button {
+  font-size: medium;
+}
+
+td div {
+  white-space: nowrap;
+}
+
+th:hover {
+  cursor: pointer;
+}
+
+.autocomplete-roles {
+  position: relative;
+  border: 1px solid #ccc;
+  border-top: none;
+  max-height: 150px;
+  overflow-y: auto;
+  background-color: white;
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0%;
+}
+
+.autocomplete-roles li {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.autocomplete-roles li:hover {
+  background-color: #f0f0f0;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 90px;
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #ffffff;
+  width: 250px;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.card:hover {
+  scale: 1.05;
+  transition: ease-in;
+  transition-duration: 0.2s;
+}
+
+.justify-content-evenly {
+  justify-content: space-evenly;
+}
+
+.application-card-header {
+  justify-content: space-between;
+}
+
+.application-card-role {
+  font-size: 24px;
+}
+
+.application-card-name {
+  font-size: 22px;
+}
+
+.application-card-location {
+  font-size: 20px;
+}
+
+.application-card {
+  /* margin: 5px 0px; */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.application-card-status span {
+  font-size: medium;
+  display: inline-block;
+  border-radius: 5px;
+  background: rgb(223, 223, 223);
+  padding: 5px 10px;
+  font-weight: bold;
+  text-transform: capitalize;
+  margin-bottom: 5px;
+}
+
+.application-card-date {
+  font-size: medium;
+  margin-top: 6px;
+  color: gray;
+  font-style: italic;
+  opacity: 0.7;
+}
+
+.actions a {
+  font-size: large;
+  display: inline-block;
+  border-radius: 5px;
+  background: rgb(223, 223, 223);
+  color: green;
+  padding: 5px 10px;
+  font-weight: bold;
+}
+
+.actions {
+  gap: 10px;
+}
+
+.actions .edit {
+  color: #000000;
+}
+
+.actions .delete {
+  color: red;
+  background-color: rgb(255, 225, 225);
+}
+
+.actions .edit:hover,
+.actions .delete:hover {
+  scale: 1.09;
+  transition: ease-in;
+  cursor: pointer;
+}
+
+.application-card-applicantName {
+  font-size: larger;
+}
+
+.grid {
+  display: grid;
+}
+
+#applicationTable {
+  grid-template-columns: 50% 50%;
+  gap: 10px;
+}
+
+.toogle-btn {
+  display: flex;
+  justify-content: right;
+  gap: 0;
+  margin-bottom: 10px;
+}
+
+.toogle-btn input {
+  background-color: white;
+  border: 0;
+}
+
+.toogle-btn input:hover {
+  cursor: pointer;
+}
+
+.active-btn {
+  background-color: rgb(189, 189, 189) !important;
+}
+
+.right-heading {
+  margin-bottom: 0;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.application-card-footer {
+  justify-content: space-between;
+}
+
+.custom-alert {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #323232;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.custom-alert.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.custom-alert.success {
+  background-color: #28a745;
+}
+
+.custom-alert.error {
+  background-color: #dc3545;
+}
+
+.text-success {
+  color: green;
+}
+
+.add-focus {
+  border: 2px solid black;
+}
+
+.custom-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  font-size: 30px;
+}
+
+.custom-modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px 40px;
+  border-radius: 16px;
+  min-width: 300px;
+  text-align: center;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.modal-actions button {
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 7px;
+  height: auto;
+  min-width: 100px;
+  cursor: pointer;
+}
+
+.modal-actions #modal-confirm {
+  background-color: orangered;
+  color: #fff;
+  border: 2px solid orangered;
+}
+
+.modal-actions #modal-cancel {
+  border: 2px solid rgb(219, 219, 219);
+}
+
+
+@media screen and (max-width: 1000px) {
+
+  body,
+  .left,
+  .right {
+    font-size: large !important;
+  }
+
+  .grid {
+    display: block;
+  }
+
+  th,
+  td {
+    padding: 5px;
+  }
+
+  .container {
+    padding: 0px 0px;
+  }
+
+  form {
+    display: block;
+    width: 90%;
+    padding: .375rem 1.15rem;
+  }
+
+  .total-status {
+    font-size: 11px !important;
+  }
+
+  .btn-label {
+    display: none;
+  }
+
+  .fs-larger {
+    font-size: 32px;
+  }
+
+  .btn-table {
+    padding: 0%;
+    font-size: 14px;
+  }
+
+  table {
+    font-size: 15px;
+  }
+
+  td {
+    text-align: center;
+  }
+
+  .statuses {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .card {
+    width: 200px;
+    font-size: 20px;
+    height: 60px;
+  }
+
+  input,
+  select {
+    font-size: small;
+    padding-left: 3px;
+  }
+
+
+  .application-card {
+    margin: 10px 5px;
+  }
+
+  #applicationTable {
+    grid-template-columns: 100%;
+  }
+
+  .application-card-role {
+    font-size: 15px;
+  }
+
+  .actions {
+    gap: 3px;
+  }
+
+  .actions a {
+    font-size: 12px;
+  }
+
+  .actions a span {
+    display: none;
+  }
+
+  .application-card-applicantName {
+    font-size: 17px;
+  }
+
+  .application-card-name {
+    font-size: 15px;
+  }
+
+  .application-card-location {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+
+  .application-card-date {
+    font-size: 13px;
+  }
+
+  .toogle-btn {
+    display: none;
+  }
+
+  .application-card-status span {
+    font-size: 14px;
+  }
+
+  .left {
+    position: static;
+  }
+
+  .custom-alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #323232;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform: translateY(-20px);
+  }
+
+  .modal-content {
+    padding: 20px 40px;
+    min-width: auto;
+    font-size: 18px;
+  }
+
+  .modal-actions button {
+    font-size: 15px;
+  }
+
+}
+
+@media screen and (max-width: 1300px) {
+  .halfs {
+    display: block;
+  }
+
+  .left {
+    position: static;
+  }
+}
+
+.text-danger {
+  color: red;
+}
