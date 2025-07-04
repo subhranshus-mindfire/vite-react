@@ -1,7 +1,7 @@
 import React from 'react';
-import { useApplicationContext } from '../context/AppContext';
+import { useApplicationContext } from '../../context/AppContext';
 import ApplicationCard from './ApplicationCard';
-import type { Application } from '../types/types';
+import type { Application } from '../../types/types';
 
 const ApplicationCards: React.FC = () => {
   const { applications, setSelectedApplication, setDeleteIndex, setModal } = useApplicationContext();

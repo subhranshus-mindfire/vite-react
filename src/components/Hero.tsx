@@ -1,6 +1,6 @@
 import React from 'react';
 import Form from './Form';
-import ApplicationsView from './ApplicationView';
+import ApplicationsView from './Applications/ApplicationView';
 
 const Hero: React.FC = () => {
   return (
