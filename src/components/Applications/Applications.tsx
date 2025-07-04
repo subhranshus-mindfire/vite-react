@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import ApplicationCards from './ApplicationCards';
+import { useApplicationContext } from '../../context/AppContext';
 
 const Applications: React.FC = () => {
   const [viewType, setViewType] = useState<'row' | 'card'>('card');
+  const { applications } = useApplicationContext()
 
   useEffect(() => {
     const storedView = localStorage.getItem('viewType');
@@ -14,6 +16,12 @@ const Applications: React.FC = () => {
   useEffect(() => {
     localStorage.setItem('viewType', viewType);
   }, [viewType]);
+
+  if (applications.length == 0) {
+    return (
+      <h1 className='text-center mt-6'>No Data to Show</h1>
+    )
+  }
 
   return (
     <ul
