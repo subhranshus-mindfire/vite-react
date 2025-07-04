@@ -7,7 +7,7 @@ const Alert: React.FC = () => {
   if (!visible) return null;
 
   return (
-    <div className="custom-alert success show">
+    <div className="fixed top-5 right-5 z-[9999] px-5 py-3 text-white text-base rounded bg-green-600 shadow-md animate-slideDown">
       {message}
     </div>
   );

@@ -1,4 +1,3 @@
-// context/AlertContext.tsx
 import React, { createContext, useState, useContext, useCallback } from 'react';
 
 interface AlertState {

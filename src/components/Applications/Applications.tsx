@@ -16,10 +16,12 @@ const Applications: React.FC = () => {
   }, [viewType]);
 
   return (
-    <ul id="applicationTable" className="grid">
+    <ul
+      id="applicationTable"
+      className="grid gap-2 grid-cols-2 max-[1000px]:grid-cols-1"
+    >
       <ApplicationCards />
     </ul>
-
   );
 };
 

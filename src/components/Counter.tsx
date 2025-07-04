@@ -15,7 +15,6 @@ const Counters: React.FC = () => {
   });
 
   useEffect(() => {
-
     const countByStatus = (status: string) =>
       applications.filter((app: Application) => app.jobStatus === status).length;
 
@@ -62,7 +61,7 @@ const Counters: React.FC = () => {
   ];
 
   return (
-    <div className="flex statuses justify-content-evenly">
+    <div className="flex flex-wrap gap-5 justify-evenly mb-6">
       {cards.map(card => (
         <Card
           key={card.id}
