@@ -91,90 +91,92 @@ const Form: React.FC = () => {
   return (
     <div className="form bg-light left">
       <h2 className="text-center"><u>Job Application Form</u></h2>
-      <form onSubmit={handleSubmit}>
-        <div className="input">
-          <label>Applicant Name<span className="text-danger">*</span></label>
-          <input type="text" name="applicantName" value={formData.applicantName} onChange={handleChange} />
-          {errors.applicantName && <span className="text-danger">{errors.applicantName}</span>}
-        </div>
-
-        <div className="input">
-          <label>Company Name<span className="text-danger">*</span></label>
-          <input type="text" name="companyName" value={formData.companyName} onChange={handleChange} />
-          {errors.companyName && <span className="text-danger">{errors.companyName}</span>}
-        </div>
-
-        <div className="input">
-          <label>Job Role<span className="text-danger">*</span></label>
-          <input
-            type="text"
-            name="jobRole"
-            value={formData.jobRole}
-            onChange={handleChange}
-            autoComplete="off"
-          />
-          {showSuggestions && suggestions.length > 0 && (
-            <ul className="autocomplete-roles" ref={suggestionsRef}>
-              {suggestions.map(role => (
-                <li key={role} onClick={() => handleSuggestionClick(role)}>
-                  {role}
-                </li>
-              ))}
-            </ul>
-          )}
-          {errors.jobRole && <span className="text-danger">{errors.jobRole}</span>}
-        </div>
-
-        <div className="input">
-          <label>Job Type<span className="text-danger">*</span></label>
-          <select name="jobType" value={formData.jobType} onChange={handleChange}>
-            <option value="onsite">On-Site</option>
-            <option value="remote">Remote</option>
-            <option value="hybrid">Hybrid</option>
-          </select>
-          {errors.jobType && <span className="text-danger">{errors.jobType}</span>}
-        </div>
-
-        {formData.jobType !== 'remote' && (
+      <div className="flex justify-content-center">
+        <form onSubmit={handleSubmit} id='applicationForm'>
           <div className="input">
-            <label>Location<span className="text-danger">*</span></label>
-            <input type="text" name="location" value={formData.location} onChange={handleChange} />
-            {errors.location && <span className="text-danger">{errors.location}</span>}
+            <label>Applicant Name<span className="text-danger">*</span></label>
+            <input type="text" name="applicantName" value={formData.applicantName} onChange={handleChange} />
+            {errors.applicantName && <span className="text-danger">{errors.applicantName}</span>}
           </div>
-        )}
 
-        <div className="input">
-          <label>Application Date<span className="text-danger">*</span></label>
-          <input
-            type="date"
-            name="applicationDate"
-            value={formData.applicationDate}
-            onChange={handleChange}
-            max={new Date().toISOString().split('T')[0]}
-          />
-          {errors.applicationDate && <span className="text-danger">{errors.applicationDate}</span>}
-        </div>
+          <div className="input">
+            <label>Company Name<span className="text-danger">*</span></label>
+            <input type="text" name="companyName" value={formData.companyName} onChange={handleChange} />
+            {errors.companyName && <span className="text-danger">{errors.companyName}</span>}
+          </div>
 
-        <div className="input">
-          <label>Application Status<span className="text-danger">*</span></label>
-          <select name="jobStatus" value={formData.jobStatus} onChange={handleChange}>
-            <option value="applied">Applied</option>
-            <option value="interviewing">Interviewing</option>
-            <option value="rejected">Rejected</option>
-            <option value="hired">Hired</option>
-          </select>
-          {errors.jobStatus && <span className="text-danger">{errors.jobStatus}</span>}
-        </div>
+          <div className="input">
+            <label>Job Role<span className="text-danger">*</span></label>
+            <input
+              type="text"
+              name="jobRole"
+              value={formData.jobRole}
+              onChange={handleChange}
+              autoComplete="off"
+            />
+            {showSuggestions && suggestions.length > 0 && (
+              <ul className="autocomplete-roles" ref={suggestionsRef}>
+                {suggestions.map(role => (
+                  <li key={role} onClick={() => handleSuggestionClick(role)}>
+                    {role}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {errors.jobRole && <span className="text-danger">{errors.jobRole}</span>}
+          </div>
 
-        <div className="input">
-          <label>Notes</label>
-          <input type="text" name="notes" value={formData.notes} onChange={handleChange} />
-        </div>
+          <div className="input">
+            <label>Job Type<span className="text-danger">*</span></label>
+            <select name="jobType" value={formData.jobType} onChange={handleChange}>
+              <option value="onsite">On-Site</option>
+              <option value="remote">Remote</option>
+              <option value="hybrid">Hybrid</option>
+            </select>
+            {errors.jobType && <span className="text-danger">{errors.jobType}</span>}
+          </div>
 
-        <div className="buttons flex justify-center">
-          <input type="submit" value="Submit" className="submit-btn" />
-        </div>
-      </form>
+          {formData.jobType !== 'remote' && (
+            <div className="input">
+              <label>Location<span className="text-danger">*</span></label>
+              <input type="text" name="location" value={formData.location} onChange={handleChange} />
+              {errors.location && <span className="text-danger">{errors.location}</span>}
+            </div>
+          )}
+
+          <div className="input">
+            <label>Application Date<span className="text-danger">*</span></label>
+            <input
+              type="date"
+              name="applicationDate"
+              value={formData.applicationDate}
+              onChange={handleChange}
+              max={new Date().toISOString().split('T')[0]}
+            />
+            {errors.applicationDate && <span className="text-danger">{errors.applicationDate}</span>}
+          </div>
+
+          <div className="input">
+            <label>Application Status<span className="text-danger">*</span></label>
+            <select name="jobStatus" value={formData.jobStatus} onChange={handleChange}>
+              <option value="applied">Applied</option>
+              <option value="interviewing">Interviewing</option>
+              <option value="rejected">Rejected</option>
+              <option value="hired">Hired</option>
+            </select>
+            {errors.jobStatus && <span className="text-danger">{errors.jobStatus}</span>}
+          </div>
+
+          <div className="input">
+            <label>Notes</label>
+            <input type="text" name="notes" value={formData.notes} onChange={handleChange} />
+          </div>
+
+          <div className="buttons flex justify-center">
+            <input type="submit" value="Submit" className="submit-btn" />
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
